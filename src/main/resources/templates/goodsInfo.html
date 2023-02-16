@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/seckill.js}"></script>
+    <script th:inline="javascript">
+        $(function () {
+            initSecKill([[${goods.id}]], [[${goods.startTime.getTime()}]], [[${goods.endTime.getTime()}]], [[${goods.price}]],
+                [[${goods.randomName}]]);
+        })
+    </script>
+</head>
+<body>
+<div th:object="${goods}">
+    <img th:src="|/*{imageUrl}|">
+    <div >
+            <span th:text="*{nameDesc}"></span>
+    </div>
+    <div>
+            <span th:text="*{name}"></span>
+            <span th:text="*{price}"></span>
+        <input type="button" value="立即抢购" id="secKillBtn" disabled>
+        <span id="seckillSpan" style="color: red"></span>
+    </div>
+</div>
+
+</body>
+</html>

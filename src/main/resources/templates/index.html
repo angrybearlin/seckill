@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="goods:${goodsList}" th:object="${goods}">
+    <a th:href="@{|/showGoodsInfo?id=*{id}|}"><img th:src="|/*{imageUrl}|"></a>
+    <div >
+        <a th:href="@{|/showGoodsInfo?id=*{id}|}">
+            <span th:text="*{nameDesc}"></span>
+        </a>
+    </div>
+    <div>
+        <a th:href="@{|/showGoodsInfo?id=*{id}|}">
+            <span th:text="*{name}"></span>
+        </a>
+        <a th:href="@{|/showGoodsInfo?id=*{id}|}">
+            <span th:text="*{price}"></span>
+        </a>
+        <input type="button" value="立即抢购" th:onclick="|showGoodsInfo(*{id})|">
+    </div>
+</div>
+<script>
+    function showGoodsInfo(id) {
+        window.location.href = "/showGoodsInfo?id="+id;
+    }
+</script>
+</body>
+</html>
